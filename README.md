@@ -294,25 +294,41 @@ pyaudio          # Audio recording (optional)
 
 ### Known Issues Due to Free API
 
-1. **AI Chat in Video Library May Not Respond**
+1. **Audio Feedback/Analysis Not Working**
+   - After recording your answer, the AI analysis may fail or return generic feedback
+   - This happens when the Gemini API rate limit is exceeded
+   - You may see: "⚠️ AI analysis failed - Rate limit exceeded"
+   - **Solution**: Wait 30-60 seconds between recordings, or try again in 1-2 minutes
+
+2. **Questions Repeating**
+   - When the AI fails, the system uses fallback questions from a preset pool
+   - The fallback pool has 10 questions per skill type to avoid repetition
+   - **Solution**: Wait for rate limit to reset (~1 minute) for AI-generated questions
+
+3. **AI Chat in Video Library May Not Respond**
    - The AI chatbot in the Videos & Tutorials section may fail to respond
    - This happens when the API rate limit is exceeded
    - **Solution**: Wait 1-2 minutes before trying again
 
-2. **Interview Analysis May Fail**
-   - If you run multiple interviews quickly, the API may return errors
-   - You'll see "⚠️ AI analysis failed - Rate limit exceeded"
-   - **Solution**: Space out your interview sessions
+4. **Interview Questions Not Generating**
+   - If you start multiple interviews quickly, AI question generation may fail
+   - **Solution**: Space out your interview sessions by at least 1 minute
 
-3. **Questions May Repeat**
-   - Under heavy load, the AI may fall back to default questions
-   - This is normal behavior when the API is unavailable
+### How to Check if Rate Limited
+
+If you see any of these errors, you've hit the rate limit:
+- "Rate limit exceeded"
+- "429 Too Many Requests"
+- "quota exceeded"
+- Generic/repetitive responses
+
+**Wait 1-2 minutes and try again.**
 
 ### For Production Use
 To remove these limitations, you would need to:
 1. Enable billing on your Google Cloud account
 2. Upgrade to a paid Gemini API tier
-3. Replace the API key in `src/backend/main.py`
+3. Replace the API key in `src/backend/main.py` (line 28)
 
 ---
 
