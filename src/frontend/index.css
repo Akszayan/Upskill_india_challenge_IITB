@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode (Clean, Airy with Better Contrast) */
+    --bg-primary: #FFFFFF;
+    --bg-muted: #F8F9FA;
+    --text-primary: #1A202C;
+    --text-muted: #2D3748;
+    --border-color: #E2E8F0;
+    --accent-color: #3B82F6;
+    /* Vibrant blue accent */
+    --accent-foreground: #FFFFFF;
+  }
+
+  .dark {
+    /* Dark Mode (Deep Blue/Black as requested originally + Modern Dark) */
+    --bg-primary: #0B1220;
+    /* Deep Midnight Blue */
+    --bg-muted: #1F2937;
+    --text-primary: #F9FAFB;
+    --text-muted: #9CA3AF;
+    --border-color: #374151;
+    --accent-color: #3B82F6;
+    /* Blue accent for dark mode */
+    --accent-foreground: #FFFFFF;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.5);
+}
