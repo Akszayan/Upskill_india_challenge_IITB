@@ -25,7 +25,7 @@ app = FastAPI()
 
 # --- Configuration ---
 PORT = int(os.environ.get("PORT", 3000))
-GEMINI_API_KEY = "AIzaSyAFJosvTw48AZ3gz3hA-tAoiPIEfayjnz0"  # User's Gemini API key
+GEMINI_API_KEY = "Your API Key"  # User's Gemini API key
 genai.configure(api_key=GEMINI_API_KEY)
 
 # --- Middleware ---
